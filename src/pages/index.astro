@@ -1,0 +1,45 @@
+---
+
+---
+<script>
+	import { World } from '../World/Wolrd.js';
+	async function main() {
+		// Get a reference to the container element
+		const container = document.querySelector('#scene-container');
+		// create a new world
+		const world = new World(container);
+        // complete async tasks
+        await world.init();
+
+       // start the animation loop
+       world.start();
+    } 
+
+main().catch((err) => {
+  console.error(err);
+});
+</script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Discoverthreejs.com - The three.js Animation System</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+
+ 
+
+ <link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <h1>Discoverthreejs.com - The three.js Animation System</h1>
+
+  <div id="scene-container">
+    <!-- Our <canvas> will be inserted here -->
+  </div>
+</body>
+
+</html>
