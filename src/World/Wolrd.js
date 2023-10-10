@@ -2,7 +2,6 @@ import { loadBirds } from './components/birds/birds.js';
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
-
 import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
@@ -32,15 +31,18 @@ class World {
   }
 
   async init() {
-    const { parrot, flamingo } = await loadBirds();
+    //const { parrot, flamingo } = await loadBirds();
+    const { flamingo } = await loadBirds()
   
     // move the target to the center of the front bird
-    controls.target.copy(parrot.position);
+    //controls.target.copy(parrot.position);
   
-    loop.updatables.push(parrot, flamingo);
-    scene.add(parrot, flamingo);
+    //loop.updatables.push(parrot, flamingo);
+    //scene.add(parrot, flamingo);
+    loop.updatables.push(flamingo);
+    scene.add( flamingo)
   
-    setTimeout(() => {
+  setTimeout(() => {
       scene.remove(flamingo);
       loop.updatables.splice(loop.updatables.indexOf(flamingo), 1);
     }, 10000); // Remove after 10 seconds (10000 milliseconds)
