@@ -27,6 +27,7 @@ class World {
     loop.updatables.push(controls);
     scene.add(ambientLight, mainLight);
 
+   
     const resizer = new Resizer(container, camera, renderer);
   }
 
@@ -40,12 +41,15 @@ class World {
     //loop.updatables.push(parrot, flamingo);
     //scene.add(parrot, flamingo);
     loop.updatables.push(flamingo);
+    console.log('Flamingo', flamingo.children[0].children[0].children[0]);
     scene.add( flamingo)
-  
-  setTimeout(() => {
-      scene.remove(flamingo);
+
+    /*setTimeout(() => {
+      const partToRemove = flamingo.getObjectByName('Sphere001_1'); // Reemplaza 'nombre_de_la_parte' con el nombre de la parte que deseas eliminar
+      flamingo.remove(partToRemove);
       loop.updatables.splice(loop.updatables.indexOf(flamingo), 1);
-    }, 10000); // Remove after 10 seconds (10000 milliseconds)
+    }, 10000); // Eliminar después de 10 segundos (10000 milisegundos)*/
+    
   }
 
   render() {
