@@ -8,7 +8,7 @@ async function loadBirds() {
   //const [parrotData, flamingoData] = await Promise.all([
   const [flamingoData] = await Promise.all([
     //loader.loadAsync('Parrot.glb'),
-    loader.loadAsync('cupula.gltf', (gltf) => { console.log('Cupula cargada'); 
+    loader.loadAsync('esfera.gltf', (gltf) => { console.log('Cupula cargada'); 
     // Obtener la escena del archivo glTF
      //aca tengo todas las geometruias, tengo que ver cómo acceder
     }),

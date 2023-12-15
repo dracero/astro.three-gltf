@@ -41,7 +41,7 @@ class World {
     //loop.updatables.push(parrot, flamingo);
     //scene.add(parrot, flamingo);
     loop.updatables.push(flamingo);
-    console.log('Flamingo', flamingo.children[0].children[0].children[0]);
+    //console.log('Flamingo', flamingo.children[0].children[0].children[0]);
     scene.add( flamingo)
 
     /*setTimeout(() => {
