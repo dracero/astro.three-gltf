@@ -3,41 +3,101 @@
 ---
 <script>
 	import { World } from '../World/Wolrd.js';
-	async function main() {
+	
+  async function main() {
 		// Get a reference to the container element
 		const container = document.querySelector('#scene-container');
 		// create a new world
 		const world = new World(container);
         // complete async tasks
         await world.init();
-
-       // start the animation loop
-       world.start();
+        // start the animation loop
+        world.start();
+        document.getElementById('hud').addEventListener('click', function() {
+        world.move()});
+        document.getElementById('hud2').addEventListener('click', function() {
+        world.pause()});
     } 
 
-main().catch((err) => {
-  console.error(err);
-});
+    main().catch((err) => {
+      console.error(err);
+    });
+ 
 </script>
+<style>
+  body {
+  overflow: hidden;
+  margin: 0;
+}
 
+#hud {
+		display: block;
+		position: absolute;
+		left: 100px;
+		top: 100px;
+		background: none;
+		border: none;
+		border-radius: 1em;
+		text-align: center;
+		font-family: sans-serif;
+		font-size: 150%;
+		padding: 20px;
+}
+
+#hud:hover {
+		cursor: pointer;
+		border: solid 1px gray;
+		back
+    ground: rgba( 255, 255, 255, 0.5 );
+}
+
+#hud2 {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: calc(100px + 20px + 20px + 1.5em); /* top position of hud + padding of hud + font-size of hud */
+  background: none;
+  border: none;
+  border-radius: 1em;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 150%;
+  padding: 20px;
+}
+
+#hud2:hover {
+  cursor: pointer;
+  border: solid 1px gray;
+  background: rgba(255, 255, 255, 0.5);
+}
+</style>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Discoverthreejs.com - The three.js Animation System</title>
-
+  <title >Discoverthreejs.com - The three.js Animation System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8" />
-
- 
-
  <link href="main.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
   <h1>Discoverthreejs.com - The three.js Animation System</h1>
-
   <div id="scene-container">
+    <div id="hud">
+      <b>I am a button</b>
+      <br>
+      <small><small>
+          PLAY
+      </small></small>
+     </div>
+     <p></p>
+     <div id="hud2">
+      <b>I am a button</b>
+      <br>
+      <small><small>
+          PAUSE
+      </small></small>
+     </div>
     <!-- Our <canvas> will be inserted here -->
   </div>
 </body>

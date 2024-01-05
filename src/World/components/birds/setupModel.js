@@ -16,22 +16,38 @@ import { AnimationMixer } from "three";
   export { setupModel };*/
   
   //Esta function es para seleccionar el modelo completo y sus animaciones
-  function setupModel(data) {
-    const model = data.scene;
-    const mixer = new AnimationMixer(model);
+  class AnimationModel {
+    constructor(data) {
+      this.model = data.scene;
+      this.mixer = new AnimationMixer(this.model);
+      this.clips = data.animations;
+      this.actions = this.clips.map(clip => this.mixer.clipAction(clip));
+      this.model.tick = (delta) => this.mixer.update(delta);
+    }
+
+    tick(delta) {
+      if (this.model.tick) {
+        this.model.tick(delta);
+      }
+    }
   
-    const clips = data.animations;
-    const actions = clips.map(clip => mixer.clipAction(clip));
+    setupModel() {
+      return this.model;
+    }
   
-    actions.forEach(action => action.play());
+    play() {
+      this.actions.forEach(action => action.paused = false);
+      this.actions.forEach(action => action.play());
+    }
   
-    model.tick = (delta) => mixer.update(delta);
-  
-    return model;
+    pause() {
+      this.actions.forEach(action => action.paused = true);
+    }
+    
   }
   
-  export { setupModel };
-  
-  
+  export { AnimationModel };
+ 
+
   
   

@@ -1,4 +1,4 @@
-import { loadBirds } from './components/birds/birds.js';
+import { loadSpheres } from './components/birds/birds.js';
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
@@ -33,17 +33,17 @@ class World {
 
   async init() {
     //const { parrot, flamingo } = await loadBirds();
-    const { flamingo } = await loadBirds()
-  
+    const { sphere } = await loadSpheres()
+    this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
     // move the target to the center of the front bird
     //controls.target.copy(parrot.position);
   
     //loop.updatables.push(parrot, flamingo);
     //scene.add(parrot, flamingo);
-    loop.updatables.push(flamingo);
+    loop.updatables.push(sphere);
     //console.log('Flamingo', flamingo.children[0].children[0].children[0]);
-    scene.add( flamingo)
-
+    scene.add( sphere.model)
+    
     /*setTimeout(() => {
       const partToRemove = flamingo.getObjectByName('Sphere001_1'); // Reemplaza 'nombre_de_la_parte' con el nombre de la parte que deseas eliminar
       flamingo.remove(partToRemove);
@@ -63,6 +63,15 @@ class World {
   stop() {
     loop.stop();
   }
+
+  move(){
+    this.sphere.play()
+  }
+ 
+  pause(){
+    this.sphere.pause()
+  }
+
 }
 
 export { World };
