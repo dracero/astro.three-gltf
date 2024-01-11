@@ -36,12 +36,23 @@ import { AnimationMixer } from "three";
     }
   
     play() {
-      this.actions.forEach(action => action.paused = false);
-      this.actions.forEach(action => action.play());
+      this.actions.forEach(action => {
+        action.setEffectiveTimeScale(1);
+        action.paused = false;
+        action.play();
+      });
     }
   
     pause() {
       this.actions.forEach(action => action.paused = true);
+    }
+
+    playReverse() {
+      this.actions.forEach(action => {
+        action.setEffectiveTimeScale(-1);
+        action.paused = false;
+        action.play();
+      });
     }
     
   }

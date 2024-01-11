@@ -72,6 +72,10 @@ class World {
     this.sphere.pause()
   }
 
+  playBack(){
+    this.sphere.playReverse()
+  }
+
 }
 
 export { World };

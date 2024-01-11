@@ -17,6 +17,8 @@
         world.move()});
         document.getElementById('hud2').addEventListener('click', function() {
         world.pause()});
+        document.getElementById('hud3').addEventListener('click', function() {
+        world.playBack()});
     } 
 
     main().catch((err) => {
@@ -69,6 +71,26 @@
   border: solid 1px gray;
   background: rgba(255, 255, 255, 0.5);
 }
+
+#hud3 {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: calc(100px + 20px + 20px + 1.5em + 30px + 20px + 20px); /* top position of hud2 + padding of hud2 */
+  border: none;
+  border-radius: 1em;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 150%;
+  padding: 20px;
+}
+
+#hud3:hover {
+  cursor: pointer;
+  border: solid 1px gray;
+  background: rgba(255, 255, 255, 0.5);
+}
+
 </style>
 <!DOCTYPE html>
 <html>
@@ -95,6 +117,14 @@
       <br>
       <small><small>
           PAUSE
+      </small></small>
+     </div>
+     <p></p>
+     <div id="hud3">
+      <b>I am a button</b>
+      <br>
+      <small><small>
+          REVERSE
       </small></small>
      </div>
     <!-- Our <canvas> will be inserted here -->
