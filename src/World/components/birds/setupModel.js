@@ -54,6 +54,14 @@ import { AnimationMixer } from "three";
         action.play();
       });
     }
+
+    erase(){
+      let object = this.model.getObjectByName('Sphere');
+         if (object) {
+                   // Elimina el objeto de la escena
+                   this.model.remove(object);
+        }
+   }
     
   }
   

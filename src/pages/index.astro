@@ -1,97 +1,11 @@
 ---
 
 ---
+
 <script>
-	import { World } from '../World/Wolrd.js';
-	
-  async function main() {
-		// Get a reference to the container element
-		const container = document.querySelector('#scene-container');
-		// create a new world
-		const world = new World(container);
-        // complete async tasks
-        await world.init();
-        // start the animation loop
-        world.start();
-        document.getElementById('hud').addEventListener('click', function() {
-        world.move()});
-        document.getElementById('hud2').addEventListener('click', function() {
-        world.pause()});
-        document.getElementById('hud3').addEventListener('click', function() {
-        world.playBack()});
-    } 
+	import  Main  from './main.js';
+</script>	
 
-    main().catch((err) => {
-      console.error(err);
-    });
- 
-</script>
-<style>
-  body {
-  overflow: hidden;
-  margin: 0;
-}
-
-#hud {
-		display: block;
-		position: absolute;
-		left: 100px;
-		top: 100px;
-		background: none;
-		border: none;
-		border-radius: 1em;
-		text-align: center;
-		font-family: sans-serif;
-		font-size: 150%;
-		padding: 20px;
-}
-
-#hud:hover {
-		cursor: pointer;
-		border: solid 1px gray;
-		background: rgba( 255, 255, 255, 0.5 );
-}
-
-#hud2 {
-  display: block;
-  position: absolute;
-  left: 100px;
-  top: calc(100px + 20px + 20px + 1.5em); /* top position of hud + padding of hud + font-size of hud */
-  background: none;
-  border: none;
-  border-radius: 1em;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 150%;
-  padding: 20px;
-}
-
-#hud2:hover {
-  cursor: pointer;
-  border: solid 1px gray;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-#hud3 {
-  display: block;
-  position: absolute;
-  left: 100px;
-  top: calc(100px + 20px + 20px + 1.5em + 30px + 20px + 20px); /* top position of hud2 + padding of hud2 */
-  border: none;
-  border-radius: 1em;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 150%;
-  padding: 20px;
-}
-
-#hud3:hover {
-  cursor: pointer;
-  border: solid 1px gray;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-</style>
 <!DOCTYPE html>
 <html>
 
@@ -125,6 +39,14 @@
       <br>
       <small><small>
           REVERSE
+      </small></small>
+     </div>
+     <p></p>
+     <div id="hud4">
+      <b>I am a button</b>
+      <br>
+      <small><small>
+          ERASE
       </small></small>
      </div>
     <!-- Our <canvas> will be inserted here -->

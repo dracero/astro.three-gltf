@@ -35,21 +35,8 @@ class World {
     //const { parrot, flamingo } = await loadBirds();
     const { sphere } = await loadSpheres()
     this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
-    // move the target to the center of the front bird
-    //controls.target.copy(parrot.position);
-  
-    //loop.updatables.push(parrot, flamingo);
-    //scene.add(parrot, flamingo);
     loop.updatables.push(sphere);
-    //console.log('Flamingo', flamingo.children[0].children[0].children[0]);
     scene.add( sphere.model)
-    
-    /*setTimeout(() => {
-      const partToRemove = flamingo.getObjectByName('Sphere001_1'); // Reemplaza 'nombre_de_la_parte' con el nombre de la parte que deseas eliminar
-      flamingo.remove(partToRemove);
-      loop.updatables.splice(loop.updatables.indexOf(flamingo), 1);
-    }, 10000); // Eliminar después de 10 segundos (10000 milisegundos)*/
-    
   }
 
   render() {
@@ -74,6 +61,10 @@ class World {
 
   playBack(){
     this.sphere.playReverse()
+  }
+
+  eraseSphere() {
+    this.sphere.erase()
   }
 
 }
