@@ -3,8 +3,9 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 function createRenderer() {
   const renderer = new WebGLRenderer({ antialias: true });
-
+   
   renderer.physicallyCorrectLights = true;
+  
   document.body.appendChild( VRButton.createButton( renderer ) );
   if ('xr' in navigator) {
     navigator.xr.enabled = true;

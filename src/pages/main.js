@@ -1,5 +1,6 @@
 import { World } from '../World/Wolrd.js';
 	
+  
   async function Main() {
 		// Get a reference to the container element
 		const container = document.querySelector('#scene-container');
