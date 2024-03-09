@@ -1,5 +1,4 @@
 import { World } from '../World/Wolrd.js';
-	
   
   async function Main() {
 		// Get a reference to the container element
@@ -18,6 +17,7 @@ import { World } from '../World/Wolrd.js';
         world.playBack()});
         document.getElementById('hud4').addEventListener('click', function() {
         world.eraseSphere()});
+  
     } 
 
     Main().catch((err) => {

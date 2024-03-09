@@ -7,6 +7,8 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
+
+
 let camera;
 let controls;
 let renderer;
@@ -41,6 +43,7 @@ class World {
 
   render() {
     renderer.render(scene, camera);
+    renderer.render.xr = true;
   }
 
   start() {
