@@ -43,6 +43,26 @@ class World {
 
   render() {
     renderer.render(scene, camera);
+
+    // Espera a que el navegador esté listo
+window.addEventListener('load', (event) => {
+  // Verifica la compatibilidad de VR
+  if (navigator.xr) {
+      navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
+          if (supported) {
+              // VR es compatible, puedes intentar activar VR aquí
+              console.log('VR es compatible, puedes intentar activar VR aquí');
+              renderer.xr.enasble = true
+          } else {
+              // VR no es compatible
+              console.log('VR no es compatible');
+          }
+      });
+  } else {
+      console.log('WebXR no está disponible en este navegador');
+  }
+});
+
   
   }
 
