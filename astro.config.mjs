@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-    renderers: ['@astrojs/renderer-preact'], // Utiliza el renderizador que prefieras
-  });
+  output: 'server',
+  adapter: vercel(),
+});

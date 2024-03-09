@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/renderer-preact": "^0.5.0",
+    "@astrojs/vercel": "^7.3.5",
     "astro": "^3.1.4",
     "three": "^0.156.1"
   }

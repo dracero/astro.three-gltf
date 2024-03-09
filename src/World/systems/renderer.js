@@ -15,6 +15,7 @@ function createRenderer() {
                 if (supported) {
                     // VR es compatible, puedes intentar activar VR aquí
                     console.log('VR es compatible, puedes intentar activar VR aquí');
+                    //Ver esta parte porque acá es donde no deja deployar
                     renderer.xr.enabled = true;
                 } else {
                     // VR no es compatible
