@@ -1,5 +1,5 @@
 import { Clock } from 'three';
-import { VRButton } from 'three/addons/webxr/VRButton.js';	
+
 
 const clock = new Clock();
 
@@ -12,8 +12,6 @@ class Loop {
   }
 
   start() {
-    document.body.appendChild( VRButton.createButton( this.renderer ) );
-    this.renderer.render.xr = true
     this.renderer.setAnimationLoop(() => {
       // tell every animated object to tick forward one frame
       this.tick();

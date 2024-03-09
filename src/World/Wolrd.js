@@ -43,7 +43,7 @@ class World {
 
   render() {
     renderer.render(scene, camera);
-    renderer.render.xr = true;
+  
   }
 
   start() {
