@@ -6,7 +6,12 @@ function createRenderer() {
 
   renderer.physicallyCorrectLights = true;
   document.body.appendChild( VRButton.createButton( renderer ) );
-  renderer.xr.enabled = true;
+  if ('xr' in navigator) {
+    navigator.xr.enabled = true;
+} else {
+    console.log('WebXR no está disponible en este navegador.');
+}
+
   
   return renderer;
 }
