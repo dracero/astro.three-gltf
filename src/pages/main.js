@@ -1,5 +1,4 @@
 import { World } from '../World/Wolrd.js';
-import { VRButton } from 'three/addons/webxr/VRButton.js';	
   
   async function Main() {
 		// Get a reference to the container element
@@ -18,7 +17,6 @@ import { VRButton } from 'three/addons/webxr/VRButton.js';
         world.playBack()});
         document.getElementById('hud4').addEventListener('click', function() {
         world.eraseSphere()});
-        document.body.appendChild( VRButton.createButton( world.render() ) );
   
     } 
 
