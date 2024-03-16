@@ -1,10 +1,10 @@
 import { World } from '../World/Wolrd.js';
-  
+
   async function Main() {
 		// Get a reference to the container element
 		const container = document.querySelector('#scene-container');
 		// create a new world
-		const world = new World(container);
+    const world = new World(container); // Pasa xrRenderer en lugar de xrSession
         // complete async tasks
         await world.init();
         // start the animation loop
@@ -17,7 +17,7 @@ import { World } from '../World/Wolrd.js';
         world.playBack()});
         document.getElementById('hud4').addEventListener('click', function() {
         world.eraseSphere()});
-  
+        world.starXR()
     } 
 
     Main().catch((err) => {

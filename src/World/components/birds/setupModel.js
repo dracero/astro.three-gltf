@@ -1,4 +1,5 @@
 import { AnimationMixer } from "three";
+
  
   //Esta function es para seleccionar el modelo completo y sus animaciones
   class AnimationModel {
