@@ -83,6 +83,10 @@ class World {
       controller.addEventListener('selectstart', () => {
         this.xrrender.onSelectStart();
       });
+
+      controller.addEventListener('selectend', () => {
+        this.xrrender.onSelectEnd();
+      });
     }
   }
 

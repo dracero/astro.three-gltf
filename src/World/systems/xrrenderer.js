@@ -30,13 +30,13 @@ class XRRenderer {
 
     onSelectStart() {
         this.controller1.userData.isSelecting = true;
-        console.log("Hola");
         this.world.move(); // Ahora puedes llamar a start() en la instancia de World
 
     }
 
     onSelectEnd() {
         this.controller1.userData.isSelecting = false;
+        this.world.pause();
     }
 
     buildController(data) {
