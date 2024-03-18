@@ -30,7 +30,6 @@ class World {
     scene.add(ambientLight, mainLight);
     const resizer = new Resizer(container, camera, renderer);
     this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
-    //this.xrrender.checkSupport(); /Esto lo saco porque mete problemas
   }
 
   async init() {
