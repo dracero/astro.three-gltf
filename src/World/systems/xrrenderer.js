@@ -56,6 +56,21 @@ class XRRenderer {
                 return new THREE.Mesh(geometry, material);
         }
     }
+    
+    checkSupport() {
+        if ('xr' in navigator) {
+            navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
+                if (supported) {
+                    console.log("El navegador soporta VR");
+                } else {
+                    console.log("El navegador no soporta VR");
+                }
+            });
+        } else {
+            console.log("El navegador no soporta VR");
+        }
+    }
+    
 }
 
 export { XRRenderer }
