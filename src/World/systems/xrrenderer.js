@@ -18,23 +18,31 @@ class XRRenderer {
     }
 
     create() {
-        document.body.appendChild(XRButton.createButton(this.renderer, { 'optionalFeatures': ['depth-sensing'] }));
-        this.renderer.xr.enabled = true;	
-        this.controller1 = this.renderer.xr.getController(0);
-        this.controller1.addEventListener('selectstart', this.onSelectStart.bind(this));
-        this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
-        this.controller1.addEventListener('connected', (event) => {
-            this.controller1.add(this.buildController(event.data));
-        });
-        this.controller1.addEventListener('disconnected', () => {
-            this.controller1.remove(this.controller1.children[0]);
-        });
-        this.scene.add(this.controller1);
+        navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
+            if (supported) {
+                document.body.appendChild(XRButton.createButton(this.renderer, { 'optionalFeatures': ['depth-sensing'] }));
+                this.renderer.xr.enabled = true;	
+                this.controller1 = this.renderer.xr.getController(0);
+                this.controller1.addEventListener('selectstart', this.onSelectStart.bind(this));
+                this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
+                this.controller1.addEventListener('connected', (event) => {
+                    this.controller1.add(this.buildController(event.data));
+                });
+                this.controller1.addEventListener('disconnected', () => {
+                    this.controller1.remove(this.controller1.children[0]);
+                });
+                this.scene.add(this.controller1);
 
-        // Añade los modelos de controlador para Oculus 2
-        this.controllerGrip1 = this.renderer.xr.getControllerGrip(0);
-        this.controllerGrip1.add(this.controllerModelFactory.createControllerModel(this.controllerGrip1));
-        this.scene.add(this.controllerGrip1);
+                // Añade los modelos de controlador para Oculus 2
+                this.controllerGrip1 = this.renderer.xr.getControllerGrip(0);
+                this.controllerGrip1.add(this.controllerModelFactory.createControllerModel(this.controllerGrip1));
+                this.scene.add(this.controllerGrip1);
+            } else {
+                console.log('El dispositivo no soporta sesiones inmersivas de VR');
+            }
+        }).catch((err) => {
+            console.error('Error al verificar el soporte de sesiones inmersivas de VR:', err);
+        });
     }
 
     onSelectStart() {
