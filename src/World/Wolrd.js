@@ -8,8 +8,6 @@ import { XRRenderer } from './systems/xrrenderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 
-
-
 let camera;
 let controls;
 let renderer;
@@ -18,7 +16,7 @@ let loop;
 
 class World {
   constructor(container,xrRenderer) {
-    this.xrSession = null; // Agrega esta línea
+    //this.xrSession = null; // Agrega esta línea
     camera = createCamera();
     renderer = createRenderer();
     scene = createScene();
@@ -29,7 +27,26 @@ class World {
     loop.updatables.push(controls);
     scene.add(ambientLight, mainLight);
     const resizer = new Resizer(container, camera, renderer);
-    this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
+    if (navigator.xr) {
+      navigator.xr.isSessionSupported('immersive-vr')
+          .then((supported) => {
+              if (supported) {
+                  // La sesión de realidad virtual inmersiva es compatible
+                  this.xrSession = null; // Agrega esta línea
+                  this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
+                  console.log('VR inmersivo es compatible');
+              } else {
+                  // La sesión de realidad virtual inmersiva no es compatible
+                  console.log('VR inmersivo no es compatible');
+              }
+          })
+          .catch((error) => {
+              console.error('Error al verificar la compatibilidad:', error);
+          });
+  } else {
+      console.log('WebXR no está disponible en este navegador');
+  }
+  //this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
   }
 
   async init() {
