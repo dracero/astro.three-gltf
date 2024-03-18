@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
+
 class XRRenderer {
     constructor(scene, renderer, worldInstance) {
         this.scene = scene;
