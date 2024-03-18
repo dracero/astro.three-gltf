@@ -1,4 +1,4 @@
-import * as THREE from 'three'; // Asegúrate de tener esta línea al inicio de tu archivo
+import * as THREE from 'three';
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
@@ -6,11 +6,14 @@ class XRRenderer {
     constructor(scene, renderer, worldInstance) {
         this.scene = scene;
         this.renderer = renderer;
-        this.world = worldInstance; // Guarda la referencia a la instancia de World
+        this.world = worldInstance;
         this.controller1 = null;
         this.controllerGrip1 = null;
         this.controller2 = null;
         this.controllerGrip2 = null;
+
+        // Añade las fábricas de modelos de controlador para Oculus 2
+        this.controllerModelFactory = new XRControllerModelFactory();
     }
 
     create() {
@@ -26,12 +29,16 @@ class XRRenderer {
             this.controller1.remove(this.controller1.children[0]);
         });
         this.scene.add(this.controller1);
+
+        // Añade los modelos de controlador para Oculus 2
+        this.controllerGrip1 = this.renderer.xr.getControllerGrip(0);
+        this.controllerGrip1.add(this.controllerModelFactory.createControllerModel(this.controllerGrip1));
+        this.scene.add(this.controllerGrip1);
     }
 
     onSelectStart() {
         this.controller1.userData.isSelecting = true;
-        this.world.move(); // Ahora puedes llamar a start() en la instancia de World
-
+        this.world.move();
     }
 
     onSelectEnd() {
@@ -59,4 +66,5 @@ class XRRenderer {
 }
 
 export { XRRenderer }
+
 
