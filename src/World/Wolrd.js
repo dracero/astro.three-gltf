@@ -7,7 +7,7 @@ import { createRenderer } from './systems/renderer.js';
 import { XRRenderer } from './systems/xrrenderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
-
+//acá se implementan los controles
 
 
 let camera;
