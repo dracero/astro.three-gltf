@@ -7,7 +7,7 @@ import { createRenderer } from './systems/renderer.js';
 import { XRRenderer } from './systems/xrrenderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
-//acá se implementan los controles
+
 
 
 let camera;
@@ -18,11 +18,7 @@ let loop;
 
 class World {
   constructor(container,xrRenderer) {
-    navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
-      if (supported) {
-            this.xrSession = null; // Agrega esta línea
-      }
-    })       
+    this.xrSession = null; // Agrega esta línea
     camera = createCamera();
     renderer = createRenderer();
     scene = createScene();
