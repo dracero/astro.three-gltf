@@ -18,7 +18,11 @@ let loop;
 
 class World {
   constructor(container,xrRenderer) {
-    this.xrSession = null; // Agrega esta línea
+    navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
+      if (supported) {
+            this.xrSession = null; // Agrega esta línea
+      }
+    })       
     camera = createCamera();
     renderer = createRenderer();
     scene = createScene();
