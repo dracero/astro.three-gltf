@@ -1,4 +1,4 @@
-/*import * as THREE from 'three'; // Asegúrate de tener esta línea al inicio de tu archivo
+import * as THREE from 'three'; // Asegúrate de tener esta línea al inicio de tu archivo
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
@@ -58,9 +58,9 @@ class XRRenderer {
     }
 }
 
-export { XRRenderer }*/
+export { XRRenderer }
 
-import * as THREE from 'three';
+/*import * as THREE from 'three';
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
@@ -78,34 +78,7 @@ class XRRenderer {
         this.controllerModelFactory = new XRControllerModelFactory();
     }
 
-    /*create() {
-        navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
-            if (supported) {
-                document.body.appendChild(XRButton.createButton(this.renderer, { 'optionalFeatures': ['depth-sensing'] }));
-                this.renderer.xr.enabled = true;	
-                this.controller1 = this.renderer.xr.getController(0);
-                this.controller1.addEventListener('selectstart', this.onSelectStart.bind(this));
-                this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
-                this.controller1.addEventListener('connected', (event) => {
-                    this.controller1.add(this.buildController(event.data));
-                });
-                this.controller1.addEventListener('disconnected', () => {
-                    this.controller1.remove(this.controller1.children[0]);
-                });
-                this.scene.add(this.controller1);
-
-                // Añade los modelos de controlador para Oculus 2
-                this.controllerGrip1 = this.renderer.xr.getControllerGrip(0);
-                this.controllerGrip1.add(this.controllerModelFactory.createControllerModel(this.controllerGrip1));
-                this.scene.add(this.controllerGrip1);
-            } else {
-                console.log('El dispositivo no soporta sesiones inmersivas de VR');
-            }
-        }).catch((err) => {
-            console.error('Error al verificar el soporte de sesiones inmersivas de VR:', err);
-        });
-    }*/
-
+    
     async create() {
         const supported = await navigator.xr.isSessionSupported('immersive-vr');
         if (supported) {
@@ -160,6 +133,6 @@ class XRRenderer {
     }
 }
 
-export { XRRenderer }
+export { XRRenderer }*/
 
 

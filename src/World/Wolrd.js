@@ -16,7 +16,7 @@ let loop;
 
 class World {
   constructor(container,xrRenderer) {
-    //this.xrSession = null; // Agrega esta línea
+    this.xrSession = null; // Agrega esta línea
     camera = createCamera();
     renderer = createRenderer();
     scene = createScene();
@@ -27,33 +27,10 @@ class World {
     loop.updatables.push(controls);
     scene.add(ambientLight, mainLight);
     const resizer = new Resizer(container, camera, renderer);
-    if (navigator.xr) {
-      navigator.xr.isSessionSupported('immersive-vr')
-          .then((supported) => {
-              if (supported) {
-                  // La sesión de realidad virtual inmersiva es compatible
-                  this.xrSession = null; // Agrega esta línea
-                  this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
-                  console.log('VR inmersivo es compatible');
-              } else {
-                  // La sesión de realidad virtual inmersiva no es compatible
-                  console.log('VR inmersivo no es compatible');
-              }
-          })
-          .catch((error) => {
-              console.error('Error al verificar la compatibilidad:', error);
-          });
-    } else {
-      console.log('WebXR no está disponible en este navegador');
-    }
-  //this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
+    this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
   }
 
   async init() {
-    if (this.xrSession) {
-      await this.xrSession.end();
-      this.xrSession = null;
-    }
     this.xrSession = await navigator.xr.requestSession('immersive-vr');
     //const { parrot, flamingo } = await loadBirds();
     const { sphere } = await loadSpheres()
@@ -110,7 +87,6 @@ class World {
       });
     }
   }
-
 }
 
 export { World };
