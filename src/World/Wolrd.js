@@ -43,13 +43,17 @@ class World {
           .catch((error) => {
               console.error('Error al verificar la compatibilidad:', error);
           });
-  } else {
+    } else {
       console.log('WebXR no está disponible en este navegador');
-  }
+    }
   //this.xrrender = new XRRenderer(scene, renderer, this); // Pasa 'this' como un argumento al constructor de XRRenderer
   }
 
   async init() {
+    if (this.xrSession) {
+      await this.xrSession.end();
+      this.xrSession = null;
+    }
     this.xrSession = await navigator.xr.requestSession('immersive-vr');
     //const { parrot, flamingo } = await loadBirds();
     const { sphere } = await loadSpheres()
