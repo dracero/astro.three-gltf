@@ -1,4 +1,4 @@
-import * as THREE from 'three'; // Asegúrate de tener esta línea al inicio de tu archivo
+/*import * as THREE from 'three'; // Asegúrate de tener esta línea al inicio de tu archivo
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
@@ -58,9 +58,9 @@ class XRRenderer {
     }
 }
 
-export { XRRenderer }
+export { XRRenderer }*/
 
-/*import * as THREE from 'three';
+import * as THREE from 'three';
 import { XRButton } from 'three/addons/webxr/XRButton.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
@@ -133,6 +133,6 @@ class XRRenderer {
     }
 }
 
-export { XRRenderer }*/
+export { XRRenderer }
 
 

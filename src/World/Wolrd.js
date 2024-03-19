@@ -31,6 +31,7 @@ class World {
   }
 
   async init() {
+    this.xrSession = null;
     this.xrSession = await navigator.xr.requestSession('immersive-vr');
     //const { parrot, flamingo } = await loadBirds();
     const { sphere } = await loadSpheres()
@@ -69,10 +70,12 @@ class World {
   }
 
   starXR (){
+    this.xrSession = null; // Agrega esta línea
     this.xrrender.create();
   }
 
   setupController() {
+    this.xrSession = null; // Agrega esta línea
     // Asume que tienes una referencia a tu XRSession llamada xrSession
     const controller = xrSession.inputSources[0]; // Obtiene el primer controlador
 
