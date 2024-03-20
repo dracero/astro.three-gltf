@@ -33,20 +33,14 @@ class World {
   }
 
   async init() {
-    if (navigator.xr) {
-      navigator.xr.isSessionSupported("immersive-vr").then((isSupported) => {
-        if (isSupported) {
           renderer.xr.enabled = true;
           this.xrSession = null; // Agrega esta línea
           this.xrSession =  navigator.xr.requestSession('immersive-vr');
-        }
-      });
-    }
-    //const { parrot, flamingo } = await loadBirds();
-    const { sphere } = await loadSpheres()
-    this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
-    loop.updatables.push(sphere);
-    scene.add( sphere.model)
+          //const { parrot, flamingo } = await loadBirds();
+          const { sphere } = await loadSpheres()
+          this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
+          loop.updatables.push(sphere);
+          scene.add( sphere.model)
   }
 
   render() {
@@ -91,14 +85,8 @@ class World {
   }
 
   setupController() {
-    if (navigator.xr) {
-      navigator.xr.isSessionSupported("immersive-vr").then((isSupported) => {
-        if (isSupported) {
-          // Your code here
-          this.xrSession = null; // Agrega esta línea
           // Asume que tienes una referencia a tu XRSession llamada xrSession
           const controller = xrSession.inputSources[0]; // Obtiene el primer controlador
-
           if (controller) {
             // Escucha el evento 'selectstart' del controlador
             controller.addEventListener('selectstart', () => {
@@ -110,11 +98,6 @@ class World {
             });
           }
         }
-      });
-    }
-    
-    
-  }
 
 }
 

@@ -99,35 +99,16 @@ class XRRenderer {
     
     create() {
         document.body.appendChild(XRButton.createButton(this.renderer, { 'optionalFeatures': ['depth-sensing'] }));
-        window.addEventListener('load', (event) => {
-            // Verifica la compatibilidad de VR
-            if (navigator.xr) {
-                navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
-                    if (supported) {
-                        // VR es compatible, puedes intentar activar VR aquÃ­
-                        console.log('VR es compatible, puedes intentar activar VR aquÃ­');
-                        //Ver esta parte porque acÃ¡ es donde no deja deployar
-                        renderer.xr.enabled = true;
-                        this.controller1 = this.renderer.xr.getController(0);
-                        this.controller1.addEventListener('selectstart', this.onSelectStart.bind(this));
-                        this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
-                        this.controller1.addEventListener('connected', (event) => {
-                            this.controller1.add(this.buildController(event.data));
-                        });
-                        this.controller1.addEventListener('disconnected', () => {
-                            this.controller1.remove(this.controller1.children[0]);
-                        });
-                        this.scene.add(this.controller1);
-                    } else {
-                        // VR no es compatible
-                        console.log('VR no es compatible');
-                    }
-                });
-            } else {
-                console.log('WebXR no estÃ¡ disponible en este navegador');
-            }
-          });
-
+        this.controller1 = this.renderer.xr.getController(0);
+        this.controller1.addEventListener('selectstart', this.onSelectStart.bind(this));
+        this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
+        this.controller1.addEventListener('connected', (event) => {
+             this.controller1.add(this.buildController(event.data));
+        });
+        this.controller1.addEventListener('disconnected', () => {
+            this.controller1.remove(this.controller1.children[0]);
+        });
+        this.scene.add(this.controller1);
     }
 
     onSelectStart() {
