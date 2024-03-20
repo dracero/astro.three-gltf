@@ -74,7 +74,7 @@ class World {
     this.xrrender.create();
   }
 
-  setupController() {
+  /*setupController() {
     this.xrSession = null; // Agrega esta línea
     // Asume que tienes una referencia a tu XRSession llamada xrSession
     const controller = xrSession.inputSources[0]; // Obtiene el primer controlador
@@ -89,7 +89,7 @@ class World {
         this.xrrender.onSelectEnd();
       });
     }
-  }
+  }*/
 }
 
 export { World };
