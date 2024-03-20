@@ -33,8 +33,15 @@ class World {
   }
 
   async init() {
-    this.xrSession = null; // Agrega esta línea
-    this.xrSession = await navigator.xr.requestSession('immersive-vr');
+    if (navigator.xr) {
+      navigator.xr.isSessionSupported("immersive-vr").then((isSupported) => {
+        if (isSupported) {
+          renderer.xr.enabled = true;
+          this.xrSession = null; // Agrega esta línea
+          this.xrSession =  navigator.xr.requestSession('immersive-vr');
+        }
+      });
+    }
     //const { parrot, flamingo } = await loadBirds();
     const { sphere } = await loadSpheres()
     this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
@@ -72,25 +79,41 @@ class World {
   }
 
   starXR (){
-    this.xrSession = null; // Agrega esta línea
-    this.xrrender.create();
+    if (navigator.xr) {
+      navigator.xr.isSessionSupported("immersive-vr").then((isSupported) => {
+        if (isSupported) {
+          // Your code here
+          this.xrSession = null; // Agrega esta línea
+          this.xrrender.create();
+        }
+      });
+    }
   }
 
   setupController() {
-    this.xrSession = null; // Agrega esta línea
-    // Asume que tienes una referencia a tu XRSession llamada xrSession
-    const controller = xrSession.inputSources[0]; // Obtiene el primer controlador
+    if (navigator.xr) {
+      navigator.xr.isSessionSupported("immersive-vr").then((isSupported) => {
+        if (isSupported) {
+          // Your code here
+          this.xrSession = null; // Agrega esta línea
+          // Asume que tienes una referencia a tu XRSession llamada xrSession
+          const controller = xrSession.inputSources[0]; // Obtiene el primer controlador
 
-    if (controller) {
-      // Escucha el evento 'selectstart' del controlador
-      controller.addEventListener('selectstart', () => {
-        this.xrrender.onSelectStart();
-      });
+          if (controller) {
+            // Escucha el evento 'selectstart' del controlador
+            controller.addEventListener('selectstart', () => {
+              this.xrrender.onSelectStart();
+            });
 
-      controller.addEventListener('selectend', () => {
-        this.xrrender.onSelectEnd();
+            controller.addEventListener('selectend', () => {
+              this.xrrender.onSelectEnd();
+            });
+          }
+        }
       });
     }
+    
+    
   }
 
 }
