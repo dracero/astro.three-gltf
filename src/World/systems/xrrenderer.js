@@ -96,7 +96,6 @@ class XRRenderer {
         this.controllerModelFactory = new XRControllerModelFactory();
     }
 
-    
     create() {
         document.body.appendChild(XRButton.createButton(this.renderer, { 'optionalFeatures': ['depth-sensing'] }));
         this.controller1 = this.renderer.xr.getController(0);
@@ -104,6 +103,7 @@ class XRRenderer {
         this.controller1.addEventListener('selectend', this.onSelectEnd.bind(this));
         this.controller1.addEventListener('connected', (event) => {
              this.controller1.add(this.buildController(event.data));
+             this.adjustControllerPosition(this.controller1);
         });
         this.controller1.addEventListener('disconnected', () => {
             this.controller1.remove(this.controller1.children[0]);
@@ -138,8 +138,15 @@ class XRRenderer {
                 return new THREE.Mesh(geometry, material);
         }
     }
+
+    adjustControllerPosition(controller) {
+        // Ajusta la posición y el tamaño del controlador aquí
+        controller.position.set(0, 0, 0); // Centra el controlador
+        controller.scale.set(1, 1, 1); // Ajusta el tamaño del controlador
+    }
 }
 
 export { XRRenderer }
+
 
 

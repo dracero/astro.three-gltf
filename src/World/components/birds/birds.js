@@ -13,13 +13,14 @@ async function loadSpheres() {
 
   const sphere = new AnimationModel(sphereData);
   sphere.setupModel();
-  sphere.model.position.set(0, 0, 0);
-  sphere.model.scale.set(0.2, 0.2, 0.2); // set scale to 0.1
+  sphere.model.position.set(0, 0, 0); // Centra el objeto
+  sphere.model.scale.set(0.05, 0.05, 0.05); // Ajusta el tamaño del objeto
   
-return {
-  sphere,
-  sphereData
-};
+  return {
+    sphere,
+    sphereData
+  };
 }
 
 export { loadSpheres };
+
