@@ -14,7 +14,7 @@ async function loadSpheres() {
   const sphere = new AnimationModel(sphereData);
   sphere.setupModel();
   sphere.model.position.set(0, 0, 0); // Centra el objeto
-  sphere.model.scale.set(0.05, 0.05, 0.05); // Ajusta el tamaño del objeto
+  sphere.model.scale.set(0.6, 0.6, 0.6); // Ajusta el tamaño del objeto
   
   return {
     sphere,
