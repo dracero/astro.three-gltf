@@ -5,7 +5,7 @@ async function loadSpheres() {
   let configuracionInicial 
   const loader = new GLTFLoader();
   const [sphereData] = await Promise.all([
-    loader.loadAsync('esfera.gltf', (gltf) => { console.log('Cupula cargada'); 
+    loader.loadAsync('esfera.glb', (gltf) => { console.log('Cupula cargada'); 
     }),
   ]);
 
