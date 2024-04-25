@@ -41,6 +41,8 @@ class World {
           this.sphere = sphere; // Almacenar sphere como una propiedad de la clase
           loop.updatables.push(sphere);
           scene.add( sphere.model)
+          // Establecer el target de los controles Orbit a la posición del objeto
+          controls.target.copy(this.sphere.model.position);
   }
 
   render() {
