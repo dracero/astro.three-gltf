@@ -1,10 +1,6 @@
 ---
-
+import Header from './Header.astro';
 ---
-
-<script>
-	import  Main  from './main.js';
-</script>	
 
 <!DOCTYPE html>
 <html>
@@ -14,42 +10,12 @@
   <meta charset="UTF-8" />
  <link href="main.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-  <h1>Discoverthreejs.com - The three.js Animation System</h1>
-  <div id="scene-container">
-    <div id="hud">
-      <b>I am a button</b>
-      <br>
-      <small><small>
-          PLAY
-      </small></small>
-     </div>
-     <p></p>
-     <div id="hud2">
-      <b>I am a button</b>
-      <br>
-      <small><small>
-          PAUSE
-      </small></small>
-     </div>
-     <p></p>
-     <div id="hud3">
-      <b>I am a button</b>
-      <br>
-      <small><small>
-          REVERSE
-      </small></small>
-     </div>
-     <p></p>
-     <div id="hud4">
-      <b>I am a button</b>
-      <br>
-      <small><small>
-          ERASE
-      </small></small>
-     </div>
-    <!-- Our <canvas> will be inserted here -->
-  </div>
+<body id="main-page">
+  <h1>Framework 3D - Oculus - UBATIC</h1>
+  <Header/>
+  <script>
+    import "./menu.js";
+  </script>
 </body>
 
 </html>

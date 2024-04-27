@@ -9,14 +9,14 @@ import { World } from '../World/Wolrd.js';
         await world.init();
         // start the animation loop
         world.start();
-        document.getElementById('hud').addEventListener('click', function() {
+        /*document.getElementById('hud').addEventListener('click', function() {
         world.move()});
         document.getElementById('hud2').addEventListener('click', function() {
         world.pause()});
         document.getElementById('hud3').addEventListener('click', function() {
         world.playBack()});
         document.getElementById('hud4').addEventListener('click', function() {
-        world.eraseSphere()});
+        world.eraseSphere()});*/
         world.starXR()
     } 
 
