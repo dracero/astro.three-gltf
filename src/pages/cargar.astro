@@ -1,0 +1,26 @@
+---
+import Home from "./Home.astro";
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title >Discoverthreejs.com - The three.js Animation System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link href="main.css" rel="stylesheet" type="text/css">
+  <script>
+    import "../World/components/uploadFile.js"
+    import "./menu.js";
+ </script>
+</head>
+<body id="main-page">
+    <div id="scene-container">
+        <h1>Framework 3D - Oculus - UBATIC</h1>
+        <Home />
+        <!-- Crea un input de tipo file y un botón para subir el archivo -->
+        <input type="file" id="fileUpload" accept=".glb" />
+        <button id="uploadButton">Subir archivo</button>
+    </div>    
+</body>
+  
+
