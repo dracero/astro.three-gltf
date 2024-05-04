@@ -1,0 +1,73 @@
+---
+
+---
+
+<script>
+    //@ts-nocheck
+    import { isOpen } from "./store.js";
+    // Función para guardar datos
+    let counter;
+    isOpen.subscribe((value) => {
+        counter = value;
+    });
+    async function guardarDatos() {
+        //const url = `/buildwith.json?value=${counter}`;
+        const url = "/buildwith.json";
+        fetch(url, { method: "POST", body: JSON.stringify({ counter }) })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                // Aquí puedes hacer lo que quieras con los datos
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    async function leerDatos() {
+        const url = "/buildwith.json";
+        fetch(url, { method: "GET" })
+            .then((response) => response.json())
+            .then((data) => {
+                // Verificar si el array está vacío
+                if (data.length > 0) {
+                    // Crear una tabla para mostrar los datos
+                    const tableRows = data.map(
+                        (item) =>
+                            `<tr><td>${item._id}</td><td>${item.data}</td></tr>`,
+                    );
+                    const table = `
+        <table>
+          <tr>
+            <th>_id</th>
+            <th>data</th>
+          </tr>
+          ${tableRows.join("")}
+        </table>
+        `;
+                    // Crear un elemento div para contener la tabla
+                    const tableContainer = document.createElement("div");
+                    tableContainer.innerHTML = table;
+                    // Agregar la tabla al cuerpo del documento
+                    document.body.appendChild(tableContainer);
+                } else {
+                    console.log("El array está vacío");
+                }
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    // Asociar las funciones a los eventos de clic de los botones
+    window.onload = function () {
+        document
+            .getElementById("guardar")
+            .addEventListener("click", guardarDatos);
+        document.getElementById("leer").addEventListener("click", leerDatos);
+    };
+</script>
+
+<button id="guardar">Guardar en DB</button>
+<button id="leer">Leer en DB</button>
