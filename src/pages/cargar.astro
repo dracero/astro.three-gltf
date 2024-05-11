@@ -12,29 +12,6 @@ import Home from "./Home.astro";
     <script>
       import "../World/components/uploadFile.js";
       import "./menu.js";
-
-      window.onload = function () {
-        const url = "/buildwith.json";
-        const uploadButton = document.getElementById("uploadButton");
-        const fileUpload = document.getElementById("fileUpload");
-
-        uploadButton.addEventListener("click", function () {
-          const file = fileUpload.files[0];
-          const formData = new FormData();
-          formData.append("file", file);
-
-          fetch(url, {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => {
-              console.log("File uploaded successfully");
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
-      };
     </script>
   </head>
   <body id="main-page">

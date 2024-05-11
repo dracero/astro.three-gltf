@@ -5,7 +5,15 @@ import fs from "fs/promises";
 export async function POST({ request }) {
   // Obtener el archivo del cuerpo de la solicitud
   const file = await request.arrayBuffer();
-  const buffer = Buffer.from(file);
+  let buffer = Buffer.from(file);
+
+  // Buscar el índice del encabezado
+  const headerEnd = buffer.indexOf("\n\n");
+
+  if (headerEnd !== -1) {
+    // Eliminar el encabezado del buffer
+    buffer = buffer.slice(headerEnd + 2);
+  }
 
   // Obtener la ruta del directorio del módulo actual
   const __filename = fileURLToPath(import.meta.url);
