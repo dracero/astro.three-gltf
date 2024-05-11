@@ -1,24 +1,26 @@
-
-document.getElementById('uploadButton').addEventListener('click', uploadFile);
+document.getElementById("uploadButton").addEventListener("click", uploadFile);
 
 function uploadFile() {
-    // Obtiene el archivo del input
-    const fileInput = document.getElementById('fileUpload');
-    alert("Hola")
-    const file = fileInput.files[0];
-    // Crea un FormData para enviar el archivo
-    const formData = new FormData();
-    formData.append('file', file);
+  // Obtiene el archivo del input
+  const fileInput = document.getElementById("fileUpload");
+  const file = fileInput.files[0];
 
+  // Lee el archivo como un ArrayBuffer
+  const reader = new FileReader();
+  reader.onload = function (event) {
     // Envía el archivo al servidor
-    fetch('/upload', {
-      method: 'POST',
-      body: formData
+    fetch("/buildwith.json", {
+      method: "POST",
+      body: event.target.result,
+      headers: {
+        "Content-Type": "model/gltf-binary",
+      },
     })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+      .then((response) => response.text())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  };
+  reader.readAsArrayBuffer(file);
 }
 
 export { uploadFile };
-
