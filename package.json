@@ -13,6 +13,7 @@
     "@astrojs/renderer-preact": "^0.5.0",
     "@astrojs/vercel": "^7.3.5",
     "astro": "^4.4.15",
+    "astrojs-service-worker": "^2.0.0",
     "formidable": "^3.5.1",
     "mongoose": "^8.3.3",
     "nanostores": "^0.10.3",

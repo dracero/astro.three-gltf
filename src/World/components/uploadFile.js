@@ -23,4 +23,3 @@ function uploadFile() {
   reader.readAsArrayBuffer(file);
 }
 
-export { uploadFile };
