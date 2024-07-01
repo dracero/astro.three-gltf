@@ -35,11 +35,6 @@ import Home from "./Home.astro";
         <small><small> REVERSE</small></small>
       </div>
       <p></p>
-      <div id="loadFile">
-        <br />
-        <small><small>CARGAR</small></small>
-      </div>
-      <p></p>
       <!--<div id="hud4">
       <b>I am a button</b>
       <br>
@@ -49,29 +44,5 @@ import Home from "./Home.astro";
      </div>-->
       <!-- Our <canvas> will be inserted here -->
     </div>
-    <script>
-      // Función para manejar el clic en el botón de cargar archivo
-      document
-        .getElementById("loadFile")
-        .addEventListener("click", function () {
-          fetch("/buildwith.json") // Asegúrate de reemplazar esto con la ruta correcta
-            .then((response) => response.blob())
-            .then((blob) => {
-              // Crear un enlace para descargar el archivo
-              const url = window.URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.style.display = "none";
-              a.href = url;
-              a.download = "archivo.glb"; // Nombre del archivo a descargar
-              document.body.appendChild(a);
-              a.click();
-              window.URL.revokeObjectURL(url);
-              console.log("cargado");
-            })
-            .catch((error) =>
-              console.error("Error al cargar el archivo:", error),
-            );
-        });
-    </script>
   </body>
 </html>

@@ -1,8 +1,10 @@
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { AnimationModel } from "./setupModel.js";
+//import { savedFile } from "../savedFile.js";
 
 async function loadSpheres() {
   let configuracionInicial;
+  //savedFile(); // Llamada a la función savedFile
   const loader = new GLTFLoader();
   const [sphereData] = await Promise.all([
     loader.loadAsync("esfera.glb", (gltf) => {
